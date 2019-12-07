@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#"
+     xml:base="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_id">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_latitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_latitude">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_longitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_longitude">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_source -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_source">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#tweet_date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#tweet_date">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#tweeted_event -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#tweeted_event">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#tweeted_userID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#tweeted_userID">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#has_tweet_properties"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#Tweet"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
