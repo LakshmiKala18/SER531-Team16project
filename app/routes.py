@@ -29,43 +29,43 @@ def index():
 
 @app.route('/search2', methods=['POST'])
 def search2():
-    userid = request.form.get('userid')
+    userid = float(request.form.get('userid'))
+    print(type(userid))
     print(userid)
     tweets = []
     sparql = SPARQLWrapper("http://104.197.168.147:3030/eventcategory/sparql")
     sparql.setQuery("""
            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-           PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-           PREFIX userdata: <http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/userdata#>
-           PREFIX tweetdata: <http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#>
-           PREFIX eventcat: <http://www.semanticweb.org/raghavakannikanti/ontologies/2019/10/eventcategory#>
-           SELECT distinct ?eventid ?eventime ?eventcity ?eventcat 
-            WHERE {
-                ?y eventcat:has_event_id ?eventid;
-                eventcat:is_of_category ?eventcat;
-                eventcat:has_start_time ?eventime;
-                eventcat:has_longitude ?elong;
-                eventcat:has_latitude ?elat;
-                eventcat:at_city ?eventcity. 
-                filter(xsd:decimal(?elat) - xsd:decimal(?lat) < 1)
-                filter(xsd:decimal(?elong) - xsd:decimal(?long) < 1)
-                    
-                SERVICE <http://34.70.187.222:3030/projecttweetdata/query>{
-                SELECT ?lat ?long
-                WHERE {
-                    ?z  tweetdata:tweeted_userID ?tuserid;
-                    tweetdata:has_latitude ?lat;
-                    tweetdata:has_longitude ?long.
-                    filter(xsd:string(?userid) = xsd:string(?tuserid))
-                    SERVICE <http://35.184.170.79:3030/userdata/query>{
-                    SELECT distinct ?userid 
-                    WHERE {
-                        ?y userdata:has_ID ?userid.
-                        filter(xsd:string(?userid) = %s)        
-                        }}
-                        }}
-            }limit 25""" % (userid))
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX spatial: <http://jena.apache.org/spatial#>
+PREFIX omgeo:   <http://www.ontotext.com/owlim/geo#>
+PREFIX userdata: <http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/userdata#>
+PREFIX tweetdata: <http://www.semanticweb.org/raghavakannikanti/ontologies/2019/11/TweetonEvent#>
+PREFIX eventcat: <http://www.semanticweb.org/raghavakannikanti/ontologies/2019/10/eventcategory#>
+SELECT distinct ?eventid ?eventime ?eventcity ?eventcat 
+WHERE {
+  ?y eventcat:has_event_id ?eventid;
+     eventcat:is_of_category ?eventcat;
+     eventcat:at_city ?eventcity;
+     eventcat:has_start_time ?eventime;
+      eventcat:has_longitude ?elong;
+      eventcat:has_latitude ?elat.
+ 
+  SERVICE <http://34.70.187.222:3030/projecttweetdata/query>{
+  SELECT ?lat ?long 
+WHERE {
+  ?z tweetdata:has_latitude ?lat;
+      tweetdata:tweeted_userID ?tuserid;
+      tweetdata:has_longitude ?long.
+      FILTER(xsd:float(?tuserid) = "%f").
+    }
+    }
+    FILTER((abs(xsd:float(?lat)) - abs(xsd:float(?elong)) < 1) && (abs(xsd:float(?long)) - abs(xsd:float(?elat)) < 1)).
+   
+
+ }limit 10""" % (userid))
     sparql.setReturnFormat(JSON)
     # sparql.method = "GET"
     results = sparql.query().convert()
@@ -109,5 +109,3 @@ def search():
         tweets.append(t)
     return render_template('search.html', tweets=tweets)
 
-
-"""            """
