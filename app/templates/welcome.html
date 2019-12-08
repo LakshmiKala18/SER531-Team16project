@@ -25,7 +25,7 @@
                      <form class="form-inline" method="POST" action="/search2">
                            <select class="form-control" name="userid">
                            {%for uids in uids%}
-                              <option value="{{uids[0]}}" selected>{{uids[0]}}</option>
+                              <option value="{{uids[0]}}" selected>{{uids[1]}}</option>
                            {%endfor%}
                            </select>
                         <button class="btn btn-primary" type="submit">Submit</button>

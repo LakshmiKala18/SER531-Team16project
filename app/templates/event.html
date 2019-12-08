@@ -13,22 +13,13 @@
       <div class="container">
          <table style="width:100%" class="table">
             <tr>
-               <th>Event ID</th>
-               <th>Date and Time</th>
-               <th>Location</th>
-               <th>Category</th>
+               <th>Tweet</th>
+               <th>Date</th>
             </tr>
             {%for tweets in tweets%} 
                <tr>
-                  <form class="form-inline" method="POST" action="/event">
-                        <input type="hidden" id="eventID" name="eventID" value="{{tweets[0]}}">
-                        <th>
-                           <button type="submit" class="btn btn-link">{{tweets[0]}}</button>
-                        </th>
-                  </form>
+                  <th>{{tweets[0]}}</th>
                   <th>{{tweets[1]}}</th>
-                  <th>{{tweets[2]}}</th>
-                  <th>{{tweets[3]}}</th>
                </tr>
             {%endfor%} 
          </table>

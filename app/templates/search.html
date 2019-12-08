@@ -20,7 +20,12 @@
             </tr>
             {%for tweets in tweets%} 
                <tr>
-                  <th>{{tweets[0]}}</th>
+                  <form class="form-inline" method="POST" action="/event">
+                     <input type="hidden" id="eventID" name="eventID" value="{{tweets[0]}}">
+                     <th>
+                        <button type="submit" class="btn btn-link">{{tweets[0]}}</button>
+                     </th>
+                  </form>
                   <th>{{tweets[1]}}</th>
                   <th>{{tweets[2]}}</th>
                   <th>{{tweets[3]}}</th>
