@@ -59,7 +59,7 @@ WHERE {
   ?z tweetdata:has_latitude ?lat;
       tweetdata:tweeted_userID ?tuserid;
       tweetdata:has_longitude ?long.
-      FILTER(xsd:float(?tuserid) = "%f").
+      FILTER(xsd:float(?tuserid) = "%f"^^xsd:float).
     }
     }
     FILTER((abs(xsd:float(?lat)) - abs(xsd:float(?elong)) < 1) && (abs(xsd:float(?long)) - abs(xsd:float(?elat)) < 1)).
@@ -109,3 +109,4 @@ def search():
         tweets.append(t)
     return render_template('search.html', tweets=tweets)
 
+# FILTER(?a (xsd:float(?lat) xsd:float(?long)) spatial:nearby(xsd:float(?elong) xsd:float(?elat) 10 'mi')).
