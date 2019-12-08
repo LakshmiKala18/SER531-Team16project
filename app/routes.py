@@ -46,25 +46,22 @@ PREFIX tweetdata: <http://www.semanticweb.org/raghavakannikanti/ontologies/2019/
 PREFIX eventcat: <http://www.semanticweb.org/raghavakannikanti/ontologies/2019/10/eventcategory#>
 SELECT distinct ?eventid ?eventime ?eventcity ?eventcat 
 WHERE {
-  ?y eventcat:has_event_id ?eventid;
-     eventcat:is_of_category ?eventcat;
-     eventcat:at_city ?eventcity;
-     eventcat:has_start_time ?eventime;
-      eventcat:has_longitude ?elong;
-      eventcat:has_latitude ?elat.
- 
-  SERVICE <http://34.70.187.222:3030/projecttweetdata/query>{
-  SELECT ?lat ?long 
-WHERE {
-  ?z tweetdata:has_latitude ?lat;
-      tweetdata:tweeted_userID ?tuserid;
-      tweetdata:has_longitude ?long.
-      FILTER(xsd:float(?tuserid) = "%f"^^xsd:float).
+    SERVICE <http://34.70.187.222:3030/projecttweetdata/query>{
+        SELECT ?lat ?long 
+        WHERE {
+        ?z tweetdata:has_latitude ?lat;
+            tweetdata:tweeted_userID ?tuserid;
+            tweetdata:has_longitude ?long.
+            FILTER(xsd:float(?tuserid) = "%f"^^xsd:float).
+        }
     }
-    }
-    FILTER((abs(xsd:float(?lat)) - abs(xsd:float(?elong)) < 1) && (abs(xsd:float(?long)) - abs(xsd:float(?elat)) < 1)).
-   
-
+    ?y eventcat:has_event_id ?eventid;
+        eventcat:is_of_category ?eventcat;
+        eventcat:at_city ?eventcity;
+        eventcat:has_start_time ?eventime;
+        eventcat:has_longitude ?elong;
+        eventcat:has_latitude ?elat.
+    FILTER((abs(xsd:float(?lat) - xsd:float(?elong)) < 1) && (abs(xsd:float(?long) - xsd:float(?elat)) < 1)).
  }limit 10""" % (userid))
     sparql.setReturnFormat(JSON)
     # sparql.method = "GET"
